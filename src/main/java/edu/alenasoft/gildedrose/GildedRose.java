@@ -34,11 +34,7 @@ public class GildedRose {
 
   public static void updateQuality() {
     for (Item item : items) {
-      if (!AGED_BRIE.equals(item.getName()) && !BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
-        if (item.getQuality() > ZERO && !SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-          item.setQuality(item.getQuality() - 1);
-        }
-      } else {
+      if (AGED_BRIE.equals(item.getName()) || BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
         if (item.getQuality() < FIFTY) {
           item.setQuality(item.getQuality() + 1);
 
@@ -52,6 +48,10 @@ public class GildedRose {
             }
           }
         }
+      } else {
+        if (item.getQuality() > ZERO && !SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
+          item.setQuality(item.getQuality() - 1);
+        }
       }
 
       if (!SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
@@ -59,17 +59,17 @@ public class GildedRose {
       }
 
       if (item.getSellIn() < ZERO) {
-        if (!AGED_BRIE.equals(item.getName())) {
-          if (!BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
+        if (AGED_BRIE.equals(item.getName())) {
+          if (item.getQuality() < FIFTY) {
+            item.setQuality(item.getQuality() + 1);
+          }
+        } else {
+          if (BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
+            item.setQuality(ZERO);
+          } else {
             if (item.getQuality() > ZERO && !SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
               item.setQuality(item.getQuality() - 1);
             }
-          } else {
-            item.setQuality(ZERO);
-          }
-        } else {
-          if (item.getQuality() < FIFTY) {
-            item.setQuality(item.getQuality() + 1);
           }
         }
       }
