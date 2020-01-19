@@ -7,7 +7,8 @@ public class GildedRose {
 
   public static final String AGED_BRIE = "Aged Brie";
   public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
-  public static final String BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT = "Backstage passes to a TAFKAL80ETC concert";
+  public static final String BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT =
+      "Backstage passes to a TAFKAL80ETC concert";
 
   public static final Integer ZERO = 0;
   public static final Integer SIX = 6;
@@ -36,43 +37,55 @@ public class GildedRose {
     for (Item item : items) {
       if (AGED_BRIE.equals(item.getName()) || BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
         if (item.getQuality() < FIFTY) {
-          item.setQuality(item.getQuality() + 1);
+          increaseQuality(item);
 
           if (BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
             if (item.getSellIn() < ELEVEN && item.getQuality() < FIFTY) {
-              item.setQuality(item.getQuality() + 1);
+              increaseQuality(item);
             }
 
             if (item.getSellIn() < SIX && item.getQuality() < FIFTY) {
-              item.setQuality(item.getQuality() + 1);
+              increaseQuality(item);
             }
           }
         }
       } else {
         if (item.getQuality() > ZERO && !SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-          item.setQuality(item.getQuality() - 1);
+          decreaseQuality(item);
         }
       }
 
       if (!SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-        item.setSellIn(item.getSellIn() - 1);
+        decreaseSellIn(item);
       }
 
       if (item.getSellIn() < ZERO) {
         if (AGED_BRIE.equals(item.getName())) {
           if (item.getQuality() < FIFTY) {
-            item.setQuality(item.getQuality() + 1);
+            increaseQuality(item);
           }
         } else {
           if (BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
             item.setQuality(ZERO);
           } else {
             if (item.getQuality() > ZERO && !SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-              item.setQuality(item.getQuality() - 1);
+              decreaseQuality(item);
             }
           }
         }
       }
     }
+  }
+
+  private static void increaseQuality(Item item) {
+    item.setQuality(item.getQuality() + 1);
+  }
+
+  private static void decreaseQuality(Item item) {
+    item.setQuality(item.getQuality() - 1);
+  }
+
+  private static void decreaseSellIn(Item item) {
+    item.setSellIn(item.getSellIn() - 1);
   }
 }
