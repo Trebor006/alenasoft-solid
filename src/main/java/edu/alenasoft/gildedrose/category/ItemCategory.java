@@ -1,9 +1,8 @@
 package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
-import edu.alenasoft.gildedrose.UtilConst;
 
-public class ItemCategory implements UtilConst {
+public class ItemCategory implements CategoryConst {
 
   protected void increaseQuality(Item item) {
     item.setQuality(item.getQuality() + 1);
@@ -29,10 +28,10 @@ public class ItemCategory implements UtilConst {
   }
 
   protected boolean isQualityLowerThanFifty(Item item) {
-    return item.getQuality() < UtilConst.FIFTY;
+    return item.getQuality() < FIFTY;
   }
 
   protected boolean isQualityGreaterThanZero(Item item) {
-    return item.getQuality() > UtilConst.ZERO;
+    return item.getQuality() > ZERO;
   }
 }

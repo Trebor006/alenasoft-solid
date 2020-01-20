@@ -1,9 +1,8 @@
 package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
-import edu.alenasoft.gildedrose.UtilConst;
 
-public class ItemCategoryFactory implements UtilConst {
+public class ItemCategoryFactory implements CategoryTypesConst {
 
   public static Qualitable categorize(Item item) {
     if (AGED_BRIE.equals(item.getName())) {
