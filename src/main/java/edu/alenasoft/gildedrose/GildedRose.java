@@ -1,11 +1,12 @@
 package edu.alenasoft.gildedrose;
 
-import edu.alenasoft.gildedrose.category.*;
+import edu.alenasoft.gildedrose.category.ItemCategoryFactory;
+import edu.alenasoft.gildedrose.category.Qualitable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GildedRose implements UtilConst {
+public class GildedRose {
 
   public static List<Item> items = new ArrayList<>();
 
@@ -31,5 +32,4 @@ public class GildedRose implements UtilConst {
       itemCategory.updateQuality(item);
     }
   }
-
 }
