@@ -2,18 +2,18 @@ package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
 
-public class AgedBrieCategory extends ItemCategory implements Qualitable {
+public class AgedBrieCategory extends Template implements Qualitable {
 
   @Override
-  public void updateQuality(Item item) {
+  public void firstSettingQuality(Item item) {
+    increaseQuality(item);
+  }
+
+  @Override
+  public void secondSettingQuality(Item item) {
     if (item.getQuality() < FIFTY) {
       increaseQuality(item);
     }
-    decreaseSellIn(item);
-    if (item.getSellIn() < ZERO) {
-      if (item.getQuality() < FIFTY) {
-        increaseQuality(item);
-      }
-    }
   }
+
 }
