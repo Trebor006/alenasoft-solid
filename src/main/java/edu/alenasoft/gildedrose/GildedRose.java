@@ -7,8 +7,7 @@ public class GildedRose {
 
   public static final String AGED_BRIE = "Aged Brie";
   public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
-  public static final String BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT =
-      "Backstage passes to a TAFKAL80ETC concert";
+  public static final String BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT = "Backstage passes to a TAFKAL80ETC concert";
 
   public static final Integer ZERO = 0;
   public static final Integer SIX = 6;
@@ -35,45 +34,67 @@ public class GildedRose {
 
   public static void updateQuality() {
     for (Item item : items) {
-      if (AGED_BRIE.equals(item.getName()) || BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
+      updateQuality(item);
+    }
+  }
+
+  private static void updateQuality(Item item) {
+    switch (item.getName()) {
+      case AGED_BRIE:
+        increaseQualityIfLowerThanFifty(item);
+        decreaseSellIn(item);
+        if (item.getSellIn() < ZERO) {
+          increaseQualityIfLowerThanFifty(item);
+        }
+        break;
+
+      case BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT:
         if (item.getQuality() < FIFTY) {
           increaseQuality(item);
-
-          if (BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
-            if (item.getSellIn() < ELEVEN && item.getQuality() < FIFTY) {
-              increaseQuality(item);
-            }
-
-            if (item.getSellIn() < SIX && item.getQuality() < FIFTY) {
-              increaseQuality(item);
-            }
-          }
-        }
-      } else {
-        if (item.getQuality() > ZERO && !SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-          decreaseQuality(item);
-        }
-      }
-
-      if (!SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-        decreaseSellIn(item);
-      }
-
-      if (item.getSellIn() < ZERO) {
-        if (AGED_BRIE.equals(item.getName())) {
-          if (item.getQuality() < FIFTY) {
+          if (item.getSellIn() < ELEVEN) {
             increaseQuality(item);
           }
-        } else {
-          if (BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
-            item.setQuality(ZERO);
-          } else {
-            if (item.getQuality() > ZERO && !SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-              decreaseQuality(item);
-            }
+          if (item.getSellIn() < SIX) {
+            increaseQuality(item);
           }
         }
-      }
+        decreaseSellIn(item);
+        if (item.getSellIn() < ZERO) {
+          item.setQuality(ZERO);
+        }
+
+        break;
+
+      default:
+        decreaseQualityGreaterThanZeroAndNotSulfuras(item);
+        decreaseSellInIfNotSulfuras(item);
+        if (item.getSellIn() < ZERO) {
+          decreaseQualityGreaterThanZeroAndNotSulfuras(item);
+        }
+        break;
+    }
+  }
+
+  private static void decreaseSellInIfNotSulfuras(Item item) {
+    if (SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
+      return;
+    }
+    decreaseSellIn(item);
+  }
+
+  private static void increaseQualityIfLowerThanFifty(Item item) {
+    if (item.getQuality() < FIFTY) {
+      increaseQuality(item);
+    }
+  }
+
+  private static void decreaseQualityGreaterThanZeroAndNotSulfuras(Item item) {
+    if (SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
+      return;
+    }
+
+    if (item.getQuality() > ZERO) {
+      decreaseQuality(item);
     }
   }
 
