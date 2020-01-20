@@ -11,9 +11,8 @@ public class AgedBrieCategory extends Template implements Qualitable {
 
   @Override
   public void secondSettingQuality(Item item) {
-    if (item.getQuality() < FIFTY) {
+    if (isQualityLowerThanFifty(item)) {
       increaseQuality(item);
     }
   }
-
 }

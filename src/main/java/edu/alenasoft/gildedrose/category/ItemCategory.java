@@ -16,4 +16,17 @@ public class ItemCategory implements UtilConst {
   protected void decreaseSellIn(Item item) {
     item.setSellIn(item.getSellIn() - 1);
   }
+
+  protected boolean isSellInLowerThanValue(Item item, Integer value) {
+    return item.getSellIn() < value;
+  }
+
+  protected boolean isQualityLowerThanFifty(Item item) {
+    return item.getQuality() < UtilConst.FIFTY;
+  }
+
+  protected boolean isQualityGreaterThanZero(Item item) {
+    return item.getQuality() > UtilConst.ZERO;
+  }
+
 }

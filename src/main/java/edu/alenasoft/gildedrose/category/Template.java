@@ -6,11 +6,11 @@ public abstract class Template extends ItemCategory implements Qualitable {
 
   @Override
   public void updateQuality(Item item) {
-    if (item.getQuality() < FIFTY) {
+    if (isQualityLowerThanFifty(item)) {
       firstSettingQuality(item);
     }
     decreaseSellIn(item);
-    if (item.getSellIn() < ZERO) {
+    if (isSellInLowerThanValue(item, ZERO)) {
       secondSettingQuality(item);
     }
   }
@@ -18,5 +18,4 @@ public abstract class Template extends ItemCategory implements Qualitable {
   public abstract void firstSettingQuality(Item item);
 
   public abstract void secondSettingQuality(Item item);
-
 }

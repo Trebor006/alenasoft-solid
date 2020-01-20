@@ -7,10 +7,10 @@ public class BackStagePassesCategory extends Template implements Qualitable {
   @Override
   public void firstSettingQuality(Item item) {
     increaseQuality(item);
-    if (item.getSellIn() < ELEVEN) {
+    if (isSellInLowerThanValue(item, ELEVEN)) {
       increaseQuality(item);
     }
-    if (item.getSellIn() < SIX) {
+    if (isSellInLowerThanValue(item, SIX)) {
       increaseQuality(item);
     }
   }

@@ -11,13 +11,13 @@ public class DefaultCategory extends ItemCategory implements Qualitable {
   protected void defaultItemCategoryCalculateQuality(Item item) {
     decreaseQualityGreaterThanZero(item);
     decreaseSellIn(item);
-    if (item.getSellIn() < ZERO) {
+    if (isSellInLowerThanValue(item, ZERO)) {
       decreaseQualityGreaterThanZero(item);
     }
   }
 
   private void decreaseQualityGreaterThanZero(Item item) {
-    if (item.getQuality() > ZERO) {
+    if (isQualityGreaterThanZero(item)) {
       decreaseQuality(item);
     }
   }
