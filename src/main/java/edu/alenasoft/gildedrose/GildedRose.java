@@ -96,12 +96,6 @@ public class GildedRose {
     }
   }
 
-  private static void increaseQualityIfLowerThanFifty(Item item) {
-    if (item.getQuality() < FIFTY) {
-      increaseQuality(item);
-    }
-  }
-
   private static void decreaseQualityGreaterThanZero(Item item) {
     if (item.getQuality() > ZERO) {
       decreaseQuality(item);
