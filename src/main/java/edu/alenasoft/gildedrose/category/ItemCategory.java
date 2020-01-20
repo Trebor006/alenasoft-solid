@@ -18,9 +18,10 @@ public class ItemCategory implements UtilConst {
   }
 
   protected void increaseQualityIfSellInLowerThan(Item item, Integer value) {
-    if (isSellInLowerThanValue(item, value)) {
-      increaseQuality(item);
+    if (!isSellInLowerThanValue(item, value)) {
+      return;
     }
+    increaseQuality(item);
   }
 
   protected boolean isSellInLowerThanValue(Item item, Integer value) {

@@ -14,8 +14,9 @@ public class AgedBrieCategory extends ItemCategory implements Qualitable {
   }
 
   private void increaseQualityIfQualityLowerThanFifty(Item item) {
-    if (isQualityLowerThanFifty(item)) {
-      increaseQuality(item);
+    if (!isQualityLowerThanFifty(item)) {
+      return;
     }
+    increaseQuality(item);
   }
 }

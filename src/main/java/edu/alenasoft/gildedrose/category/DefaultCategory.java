@@ -17,8 +17,9 @@ public class DefaultCategory extends ItemCategory implements Qualitable {
   }
 
   private void decreaseQualityGreaterThanZero(Item item) {
-    if (isQualityGreaterThanZero(item)) {
-      decreaseQuality(item);
+    if (!isQualityGreaterThanZero(item)) {
+      return;
     }
+    decreaseQuality(item);
   }
 }

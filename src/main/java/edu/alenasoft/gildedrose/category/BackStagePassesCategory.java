@@ -14,11 +14,12 @@ public class BackStagePassesCategory extends ItemCategory implements Qualitable 
   }
 
   private void increaseQualityIfLowerThanFifty(Item item) {
-    if (isQualityLowerThanFifty(item)) {
-      increaseQuality(item);
-      increaseQualityIfSellInLowerThan(item, ELEVEN);
-      increaseQualityIfSellInLowerThan(item, SIX);
+    if (!isQualityLowerThanFifty(item)) {
+      return;
     }
+    increaseQuality(item);
+    increaseQualityIfSellInLowerThan(item, ELEVEN);
+    increaseQualityIfSellInLowerThan(item, SIX);
   }
 
 }
