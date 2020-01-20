@@ -9,8 +9,8 @@ public class ItemValidator implements CategoryConst {
     return item.getSellIn() < value;
   }
 
-  public static boolean isQualityLowerThanFifty(Item item) {
-    return item.getQuality() < FIFTY;
+  public static boolean isQualityGreaterOrEqualThanFifty(Item item) {
+    return item.getQuality() >= FIFTY;
   }
 
   public static boolean isQualityGreaterThanZero(Item item) {

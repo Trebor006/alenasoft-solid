@@ -15,7 +15,7 @@ public class BackStagePassesCategory extends ItemCategory implements Qualitable 
   }
 
   private void increaseQualityIfLowerThanFifty(Item item) {
-    if (!ItemValidator.isQualityLowerThanFifty(item)) {
+    if (ItemValidator.isQualityGreaterOrEqualThanFifty(item)) {
       return;
     }
     increaseQuality(item);
