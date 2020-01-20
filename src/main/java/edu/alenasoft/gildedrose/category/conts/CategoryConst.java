@@ -1,4 +1,4 @@
-package edu.alenasoft.gildedrose.category;
+package edu.alenasoft.gildedrose.category.conts;
 
 public interface CategoryConst {
   Integer ZERO = 0;

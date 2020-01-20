@@ -1,6 +1,7 @@
 package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
+import edu.alenasoft.gildedrose.category.validator.ItemValidator;
 
 public class DefaultCategory extends ItemCategory implements Qualitable {
 
@@ -11,13 +12,13 @@ public class DefaultCategory extends ItemCategory implements Qualitable {
   protected void defaultItemCategoryCalculateQuality(Item item) {
     decreaseQualityGreaterThanZero(item);
     decreaseSellIn(item);
-    if (isSellInLowerThanValue(item, ZERO)) {
+    if (ItemValidator.isSellInLowerThanValue(item, ZERO)) {
       decreaseQualityGreaterThanZero(item);
     }
   }
 
   private void decreaseQualityGreaterThanZero(Item item) {
-    if (!isQualityGreaterThanZero(item)) {
+    if (!ItemValidator.isQualityGreaterThanZero(item)) {
       return;
     }
     decreaseQuality(item);

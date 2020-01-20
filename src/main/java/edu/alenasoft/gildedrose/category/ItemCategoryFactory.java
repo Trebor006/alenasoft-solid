@@ -1,6 +1,7 @@
 package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
+import edu.alenasoft.gildedrose.category.conts.CategoryTypesConst;
 
 public class ItemCategoryFactory implements CategoryTypesConst {
 

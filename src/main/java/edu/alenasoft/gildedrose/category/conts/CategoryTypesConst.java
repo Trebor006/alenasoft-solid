@@ -1,4 +1,4 @@
-package edu.alenasoft.gildedrose.category;
+package edu.alenasoft.gildedrose.category.conts;
 
 public interface CategoryTypesConst {
   String AGED_BRIE = "Aged Brie";

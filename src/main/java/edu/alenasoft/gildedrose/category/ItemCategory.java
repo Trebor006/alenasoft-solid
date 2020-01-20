@@ -1,8 +1,10 @@
 package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
+import edu.alenasoft.gildedrose.category.conts.CategoryConst;
+import edu.alenasoft.gildedrose.category.validator.ItemValidator;
 
-public class ItemCategory implements CategoryConst {
+public abstract class ItemCategory implements CategoryConst {
 
   protected void increaseQuality(Item item) {
     item.setQuality(item.getQuality() + 1);
@@ -17,21 +19,10 @@ public class ItemCategory implements CategoryConst {
   }
 
   protected void increaseQualityIfSellInLowerThan(Item item, Integer value) {
-    if (!isSellInLowerThanValue(item, value)) {
+    if (!ItemValidator.isSellInLowerThanValue(item, value)) {
       return;
     }
     increaseQuality(item);
   }
 
-  protected boolean isSellInLowerThanValue(Item item, Integer value) {
-    return item.getSellIn() < value;
-  }
-
-  protected boolean isQualityLowerThanFifty(Item item) {
-    return item.getQuality() < FIFTY;
-  }
-
-  protected boolean isQualityGreaterThanZero(Item item) {
-    return item.getQuality() > ZERO;
-  }
 }
