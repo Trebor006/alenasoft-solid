@@ -27,12 +27,12 @@ public class GildedRose implements UtilConst {
 
   public static void updateQuality() {
     for (Item item : items) {
-      ItemCategory itemCategory = categorize(item);
+      Qualitable itemCategory = categorize(item);
       itemCategory.updateQuality(item);
     }
   }
 
-  private static ItemCategory categorize(Item item) {
+  private static Qualitable categorize(Item item) {
     if (AGED_BRIE.equals(item.getName())) {
       return new AgedBrieCategory();
     }
@@ -49,6 +49,6 @@ public class GildedRose implements UtilConst {
       return new ConjuredCategory();
     }
 
-    return new ItemCategory();
+    return new DefaultCategory();
   }
 }

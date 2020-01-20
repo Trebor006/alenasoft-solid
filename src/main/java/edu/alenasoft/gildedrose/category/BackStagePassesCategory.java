@@ -2,7 +2,7 @@ package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
 
-public class BackStagePassesCategory extends ItemCategory {
+public class BackStagePassesCategory extends ItemCategory implements Qualitable {
 
   @Override
   public void updateQuality(Item item) {

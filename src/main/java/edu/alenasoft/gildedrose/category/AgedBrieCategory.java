@@ -2,7 +2,7 @@ package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
 
-public class AgedBrieCategory extends ItemCategory {
+public class AgedBrieCategory extends ItemCategory implements Qualitable {
 
   @Override
   public void updateQuality(Item item) {
