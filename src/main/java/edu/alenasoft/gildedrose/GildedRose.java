@@ -46,6 +46,8 @@ public class GildedRose {
       case BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT:
         backstagePassesCalculateQuality(item);
         break;
+      case SULFURAS_HAND_OF_RAGNAROS:
+        break;
       default:
         normalItemCalculateQuality(item);
         break;
@@ -81,18 +83,11 @@ public class GildedRose {
   }
 
   private static void normalItemCalculateQuality(Item item) {
-    decreaseQualityGreaterThanZeroAndNotSulfuras(item);
-    decreaseSellInIfNotSulfuras(item);
-    if (item.getSellIn() < ZERO) {
-      decreaseQualityGreaterThanZeroAndNotSulfuras(item);
-    }
-  }
-
-  private static void decreaseSellInIfNotSulfuras(Item item) {
-    if (SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-      return;
-    }
+    decreaseQualityGreaterThanZero(item);
     decreaseSellIn(item);
+    if (item.getSellIn() < ZERO) {
+      decreaseQualityGreaterThanZero(item);
+    }
   }
 
   private static void increaseQualityIfLowerThanFifty(Item item) {
@@ -101,11 +96,7 @@ public class GildedRose {
     }
   }
 
-  private static void decreaseQualityGreaterThanZeroAndNotSulfuras(Item item) {
-    if (SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-      return;
-    }
-
+  private static void decreaseQualityGreaterThanZero(Item item) {
     if (item.getQuality() > ZERO) {
       decreaseQuality(item);
     }
