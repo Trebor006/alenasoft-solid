@@ -1,9 +1,6 @@
 package edu.alenasoft.gildedrose;
 
-import edu.alenasoft.gildedrose.category.AgedBrieCategory;
-import edu.alenasoft.gildedrose.category.BackStagePassesCategory;
-import edu.alenasoft.gildedrose.category.ConjuredCategory;
-import edu.alenasoft.gildedrose.category.SulfurasCategory;
+import edu.alenasoft.gildedrose.category.*;
 
 import java.util.ArrayList;
 import java.util.List;

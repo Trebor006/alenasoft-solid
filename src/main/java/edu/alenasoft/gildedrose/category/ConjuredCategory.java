@@ -1,7 +1,6 @@
 package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
-import edu.alenasoft.gildedrose.ItemCategory;
 
 public class ConjuredCategory extends ItemCategory {
 

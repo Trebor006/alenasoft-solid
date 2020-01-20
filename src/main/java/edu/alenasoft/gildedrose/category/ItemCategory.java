@@ -1,4 +1,7 @@
-package edu.alenasoft.gildedrose;
+package edu.alenasoft.gildedrose.category;
+
+import edu.alenasoft.gildedrose.Item;
+import edu.alenasoft.gildedrose.UtilConst;
 
 public class ItemCategory implements UtilConst {
 
