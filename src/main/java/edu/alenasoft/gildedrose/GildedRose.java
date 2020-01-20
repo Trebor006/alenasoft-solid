@@ -41,37 +41,50 @@ public class GildedRose {
   private static void updateQuality(Item item) {
     switch (item.getName()) {
       case AGED_BRIE:
-        increaseQualityIfLowerThanFifty(item);
-        decreaseSellIn(item);
-        if (item.getSellIn() < ZERO) {
-          increaseQualityIfLowerThanFifty(item);
-        }
+        agedBrieItemCalculateQuality(item);
         break;
-
       case BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT:
-        if (item.getQuality() < FIFTY) {
-          increaseQuality(item);
-          if (item.getSellIn() < ELEVEN) {
-            increaseQuality(item);
-          }
-          if (item.getSellIn() < SIX) {
-            increaseQuality(item);
-          }
-        }
-        decreaseSellIn(item);
-        if (item.getSellIn() < ZERO) {
-          item.setQuality(ZERO);
-        }
-
+        backstagePassesCalculateQuality(item);
         break;
-
       default:
-        decreaseQualityGreaterThanZeroAndNotSulfuras(item);
-        decreaseSellInIfNotSulfuras(item);
-        if (item.getSellIn() < ZERO) {
-          decreaseQualityGreaterThanZeroAndNotSulfuras(item);
-        }
+        normalItemCalculateQuality(item);
         break;
+    }
+  }
+
+  private static void agedBrieItemCalculateQuality(Item item) {
+    if (item.getQuality() < FIFTY) {
+      increaseQuality(item);
+    }
+    decreaseSellIn(item);
+    if (item.getSellIn() < ZERO) {
+      if (item.getQuality() < FIFTY) {
+        increaseQuality(item);
+      }
+    }
+  }
+
+  private static void backstagePassesCalculateQuality(Item item) {
+    if (item.getQuality() < FIFTY) {
+      increaseQuality(item);
+      if (item.getSellIn() < ELEVEN) {
+        increaseQuality(item);
+      }
+      if (item.getSellIn() < SIX) {
+        increaseQuality(item);
+      }
+    }
+    decreaseSellIn(item);
+    if (item.getSellIn() < ZERO) {
+      item.setQuality(ZERO);
+    }
+  }
+
+  private static void normalItemCalculateQuality(Item item) {
+    decreaseQualityGreaterThanZeroAndNotSulfuras(item);
+    decreaseSellInIfNotSulfuras(item);
+    if (item.getSellIn() < ZERO) {
+      decreaseQualityGreaterThanZeroAndNotSulfuras(item);
     }
   }
 
