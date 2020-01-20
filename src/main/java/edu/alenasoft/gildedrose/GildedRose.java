@@ -1,5 +1,10 @@
 package edu.alenasoft.gildedrose;
 
+import edu.alenasoft.gildedrose.category.AgedBrieCategory;
+import edu.alenasoft.gildedrose.category.BackStagePassesCategory;
+import edu.alenasoft.gildedrose.category.ConjuredCategory;
+import edu.alenasoft.gildedrose.category.SulfurasCategory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,19 +37,19 @@ public class GildedRose implements UtilConst {
 
   private static ItemCategory categorize(Item item) {
     if (AGED_BRIE.equals(item.getName())) {
-      return new ItemCategory();
+      return new AgedBrieCategory();
     }
 
     if (BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
-      return new ItemCategory();
+      return new BackStagePassesCategory();
     }
 
     if (SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-      return new ItemCategory();
+      return new SulfurasCategory();
     }
 
     if (CONJURED_MANA_CAKE.equals(item.getName())) {
-      return new ItemCategory();
+      return new ConjuredCategory();
     }
 
     return new ItemCategory();
