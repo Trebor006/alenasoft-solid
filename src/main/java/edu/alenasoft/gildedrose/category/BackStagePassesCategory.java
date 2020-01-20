@@ -2,21 +2,22 @@ package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
 
-public class BackStagePassesCategory extends Template implements Qualitable {
+public class BackStagePassesCategory extends ItemCategory implements Qualitable {
 
   @Override
-  public void firstSettingQuality(Item item) {
-    increaseQuality(item);
-    if (isSellInLowerThanValue(item, ELEVEN)) {
+  public void updateQuality(Item item) {
+    if (isQualityLowerThanFifty(item)) {
       increaseQuality(item);
+      if (isSellInLowerThanValue(item, ELEVEN)) {
+        increaseQuality(item);
+      }
+      if (isSellInLowerThanValue(item, SIX)) {
+        increaseQuality(item);
+      }
     }
-    if (isSellInLowerThanValue(item, SIX)) {
-      increaseQuality(item);
+    decreaseSellIn(item);
+    if (isSellInLowerThanValue(item, ZERO)) {
+      item.setQuality(ZERO);
     }
-  }
-
-  @Override
-  public void secondSettingQuality(Item item) {
-    item.setQuality(ZERO);
   }
 }
