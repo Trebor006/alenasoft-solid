@@ -27,28 +27,9 @@ public class GildedRose implements UtilConst {
 
   public static void updateQuality() {
     for (Item item : items) {
-      Qualitable itemCategory = categorize(item);
+      Qualitable itemCategory = ItemCategoryFactory.categorize(item);
       itemCategory.updateQuality(item);
     }
   }
 
-  private static Qualitable categorize(Item item) {
-    if (AGED_BRIE.equals(item.getName())) {
-      return new AgedBrieCategory();
-    }
-
-    if (BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT.equals(item.getName())) {
-      return new BackStagePassesCategory();
-    }
-
-    if (SULFURAS_HAND_OF_RAGNAROS.equals(item.getName())) {
-      return new SulfurasCategory();
-    }
-
-    if (CONJURED_MANA_CAKE.equals(item.getName())) {
-      return new ConjuredCategory();
-    }
-
-    return new DefaultCategory();
-  }
 }
