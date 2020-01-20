@@ -6,18 +6,19 @@ public class BackStagePassesCategory extends ItemCategory implements Qualitable 
 
   @Override
   public void updateQuality(Item item) {
-    if (isQualityLowerThanFifty(item)) {
-      increaseQuality(item);
-      if (isSellInLowerThanValue(item, ELEVEN)) {
-        increaseQuality(item);
-      }
-      if (isSellInLowerThanValue(item, SIX)) {
-        increaseQuality(item);
-      }
-    }
+    increaseQualityIfLowerThanFifty(item);
     decreaseSellIn(item);
     if (isSellInLowerThanValue(item, ZERO)) {
       item.setQuality(ZERO);
     }
   }
+
+  private void increaseQualityIfLowerThanFifty(Item item) {
+    if (isQualityLowerThanFifty(item)) {
+      increaseQuality(item);
+      increaseQualityIfSellInLowerThan(item, ELEVEN);
+      increaseQualityIfSellInLowerThan(item, SIX);
+    }
+  }
+
 }
