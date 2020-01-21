@@ -1,10 +1,9 @@
 package edu.alenasoft.gildedrose.category;
 
 import edu.alenasoft.gildedrose.Item;
-import edu.alenasoft.gildedrose.category.conts.CategoryConst;
 import edu.alenasoft.gildedrose.category.validator.ItemValidator;
 
-public abstract class ItemCategory implements CategoryConst {
+public abstract class ItemCategory {
 
   protected void increaseQuality(Item item) {
     item.setQuality(item.getQuality() + 1);
@@ -24,5 +23,4 @@ public abstract class ItemCategory implements CategoryConst {
     }
     increaseQuality(item);
   }
-
 }

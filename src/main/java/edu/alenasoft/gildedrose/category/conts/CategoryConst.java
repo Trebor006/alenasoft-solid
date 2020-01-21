@@ -1,8 +1,17 @@
 package edu.alenasoft.gildedrose.category.conts;
 
-public interface CategoryConst {
-  Integer ZERO = 0;
-  Integer SIX = 6;
-  Integer ELEVEN = 11;
-  Integer FIFTY = 50;
+import lombok.Getter;
+
+@Getter
+public enum CategoryConst {
+  ZERO(0),
+  SIX(6),
+  ELEVEN(11),
+  FIFTY(50);
+
+  Integer value;
+
+  CategoryConst(Integer value) {
+    this.value = value;
+  }
 }
